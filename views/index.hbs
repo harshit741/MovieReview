@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Rating and Reviews</title>
+</head>
+
+<body>
+    <h1>Movie Rating and Reviews: </h1>
+    <form method="POST" action="/addmovie">
+        <div class="form-group">
+            <label for="movie">Add Movie: </label>
+            <input type="text" class="form-control" placeholder="Movie Name" name="name" id="movie">
+        </div>
+        <input type="submit" class="btn btn-primary" value="Add">
+    </form>
+    <br>
+    {{#each movies}}
+    <div class="card">
+        <div class="card-header">
+            <h3><a href="/reviews/{{this.name}}">{{this.name}}</a></h3>
+        </div>
+        <div class="card-body">
+            {{#if this.averageRating}}<h5 class="card-title">Average Rating: {{this.averageRating}}</h5>{{/if}}
+            {{#if this.totalRating}}<h5 class="card-title">Total people rated: {{this.totalRating}}</h5>{{/if}}
+            <a href="/addreview/{{this.name}}" class="btn btn-primary">Add Review</a>
+        </div>
+    </div>
+    {{/each}}
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+      {{#if this.prevPageNumber}}<li class="page-item"><a class="page-link" href="/?size=5&pageNumber={{this.prevPageNumber}}">Previous</a></li>{{/if}}
+      {{#if this.nextPageNumber}}<li class="page-item"><a class="page-link" href="/?size=5&pageNumber={{this.nextPageNumber}}">Next</a></li>{{/if}}
+  </ul>
+</nav>
+</body>
+
+</html>

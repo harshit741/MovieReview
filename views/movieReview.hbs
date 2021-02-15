@@ -1,0 +1,35 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+
+<body>
+    <a href="/" class="btn btn-info">Home</a>
+    <br><br>
+    <div class="jumbotron">
+        <h1>{{title}}</h1>
+        <a class="btn btn-primary btn-lg" href="/addreview/{{title}}" role="button">Add Review</a>
+
+    </div>
+    {{#each reviews}}
+    <div class="card">
+        <div class="card-body">
+            <h5><label class="card-title" for="email">Email: </label> </h5>
+            <p class="card-text">{{this.author}}</p>
+            {{#if this.comment}}
+            <h5><label class="card-title" for="comment">Comment: </label> </h5>
+            <p class="card-text">{{this.comment}}</p>
+            {{/if}}
+            <h5 class="card-title" for="rating">Rating: </h5>
+            <p class="card-text">{{this.rating}}</p>
+        </div>
+    </div>
+    {{/each}}
+
+</body>
+
+</html>
